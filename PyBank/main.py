@@ -84,8 +84,10 @@ print("Greatest Increase in Profits:", max_increase)
 print("Greatest Decrease in Profits:", max_decrease)
 
 
-# Create a text file to add summary result
-with open("PyBank_analysis.txt", "w") as file:
+# Create a text file in the Analysis folder to add summary result
+file_path = os.path.join('/Users/santoshpoudel/Desktop/University_of_Toronto/Assignments/Python Assignment/python-challenge/PyBank/Analysis', "PyBank_analysis.txt")
+
+with open(file_path, "w") as file:
     # Write the analysis to the text file
     file.write("Financial Analysis\n")
     file.write("-----------------------------\n")
