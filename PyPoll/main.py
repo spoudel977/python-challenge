@@ -21,15 +21,14 @@ with open(file_path, 'r') as file:
 def calculate_frequency(csv_reader):
     from collections import Counter
     unique_name = Counter()
-    
+
     for row in csv_reader:
         name = row[2]  # Column C
-        
-        # Count the frequency of each unique candidate's name
         unique_name[name] += 1
     
     return unique_name
 
+## Count Total  (Frequency) each Candidate name appeared next to Ballot ID
 with open(file_path, 'r') as file:
     csv_reader = csv.reader(file)
     next(csv_reader)
@@ -44,7 +43,7 @@ with open(file_path, 'r') as file:
 # Find the winning candidate who has the highest percentage of vote count
 winning_candidate = max(percent_dict, key=percent_dict.get)
 
-
+# Print results
 print("Election Results")
 print("---------------------------------------------")
 print("\n")
@@ -60,11 +59,8 @@ print("---------------------------------------------")
 
 print("Winner : ", winning_candidate)
 
+# Create a text file in the Analysis folder to add summary result
 
-
-# Create a text file to add summary result
-
-# # Created file inside the Analysis folder
 file_path = os.path.join('/Users/santoshpoudel/Desktop/University_of_Toronto/Assignments/Python Assignment/python-challenge/PyPoll/Analysis', "PyBank_analysis.txt")
 
 with open(file_path, "w") as file:
