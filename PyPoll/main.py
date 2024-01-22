@@ -61,4 +61,14 @@ print("---------------------------------------------")
 print("Winner : ", winning_candidate)
 
 
+# Open a text file in write mode
+with open("PyPoll_analysis.txt", "w") as file:
+    # Write the analysis to the text file
+    file.write("Election Results\n")
+    file.write("-----------------------------\n")
+    file.write(f"Total Votes: ", count_ballotID)
+    file.write("-----------------------------\n")
+    file.write(f"{name}: {percentage:.3f}% ({frequency})")
 
+# Close the text file
+file.close()
