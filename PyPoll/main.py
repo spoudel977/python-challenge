@@ -8,7 +8,7 @@ count_ballotID = 0
 #  Set file path for the CSV file - PyPoll
 file_path = '/Users/santoshpoudel/Desktop/University_of_Toronto/Assignments/Python Assignment/python-challenge/PyPoll/Resources/election_data.csv'
 
-# Count total number of Vote Cast by people
+# Count total number of Vote Cast by Voters
 with open(file_path, 'r') as file:
     csv_reader = csv.reader(file)
     next(csv_reader)
@@ -48,7 +48,7 @@ winning_candidate = max(percent_dict, key=percent_dict.get)
 print("Election Results")
 print("---------------------------------------------")
 print("\n")
-print("Total Votes: ", count_ballotID)
+print("Total Votes : ", count_ballotID)
 print("---------------------------------------------")
 print("\n")
 # Print the percentage and vote count for each candidate
@@ -62,13 +62,22 @@ print("Winner : ", winning_candidate)
 
 
 # Open a text file in write mode
-with open("PyPoll_analysis.txt", "w") as file:
+# Create a text file to add summary result
+with open("PyBank_analysis.txt", "w") as file:
     # Write the analysis to the text file
     file.write("Election Results\n")
-    file.write("-----------------------------\n")
-    file.write(f"Total Votes: ", count_ballotID)
+   
+    file.write(f"Total Votes: {count_ballotID}\n")
     file.write("-----------------------------\n")
     file.write(f"{name}: {percentage:.3f}% ({frequency})")
+
+    file.write("Election Results")
+    file.write("---------------------------------------------")
+    file.write("Total Votes: " + str(count_ballotID))
+    file.write("---------------------------------------------")
+    file.write("\n")
+    file.write(f"{name}: {percentage:.3f}% ({frequency})")
+    file.write(f"Winner: {winning_candidate}")
 
 # Close the text file
 file.close()
