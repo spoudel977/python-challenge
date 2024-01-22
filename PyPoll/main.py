@@ -61,23 +61,30 @@ print("---------------------------------------------")
 print("Winner : ", winning_candidate)
 
 
-# Open a text file in write mode
+
 # Create a text file to add summary result
-with open("PyBank_analysis.txt", "w") as file:
+
+# # Created file inside the Analysis folder
+file_path = os.path.join('/Users/santoshpoudel/Desktop/University_of_Toronto/Assignments/Python Assignment/python-challenge/PyPoll/Analysis', "PyBank_analysis.txt")
+
+with open(file_path, "w") as file:
     # Write the analysis to the text file
     file.write("Election Results\n")
-   
+    file.write("---------------------------------------------\n") 
     file.write(f"Total Votes: {count_ballotID}\n")
     file.write("-----------------------------\n")
-    file.write(f"{name}: {percentage:.3f}% ({frequency})")
-
-    file.write("Election Results")
-    file.write("---------------------------------------------")
-    file.write("Total Votes: " + str(count_ballotID))
-    file.write("---------------------------------------------")
-    file.write("\n")
-    file.write(f"{name}: {percentage:.3f}% ({frequency})")
-    file.write(f"Winner: {winning_candidate}")
+    for name, frequency in result.items():
+            percentage = percent_dict[name]
+            file.write(f"{name}: {percentage:.3f}% ({frequency})\n")
+    
+    file.write(f"Winner: {winning_candidate}\n")
 
 # Close the text file
-file.close()
+    file.close()
+
+
+
+
+
+    
+
