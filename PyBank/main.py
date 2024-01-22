@@ -25,15 +25,6 @@ with open(file_path, 'r') as file:
         value = float(row[1])
         total_sum += value
 
-# Print title for answer table
-print("Financial Analysis")
-print("-----------------------------")
-
-# Print total month
-print("Total Month:", non_blank_row_count)
-
-# Print Total Value
-print("Total :", total_sum)
 
 
 ### Calculate Average Change
@@ -68,8 +59,20 @@ for row in rows:
     previous_value = value
     change_count += 1
 
+
 # Calculate the average change
 average_change = change_sum / (change_count - 1)
+
+
+# Print title for answer table
+print("Financial Analysis")
+print("-----------------------------")
+
+# Print total month
+print("Total Month:", non_blank_row_count)
+
+# Print Total Value
+print("Total :", total_sum)
 
 # Print Average Change
 print("Average Change:", average_change)
@@ -79,3 +82,18 @@ print("Greatest Increase in Profits:", max_increase)
 
 # Print Greatest Decrease in Profits
 print("Greatest Decrease in Profits:", max_decrease)
+
+
+# Create a text file to add summary result
+with open("PyBank_analysis.txt", "w") as file:
+    # Write the analysis to the text file
+    file.write("Financial Analysis\n")
+    file.write("-----------------------------\n")
+    file.write(f"Total Months: {non_blank_row_count}\n")
+    file.write(f"Total: ${total_sum}\n")
+    file.write(f"Average Change: ${average_change}\n")
+    file.write(f"Greatest Increase in Profits: (${max_increase})\n")
+    file.write(f"Greatest Decrease in Profits: (${max_decrease})\n")
+
+# Close the text file
+file.close()
