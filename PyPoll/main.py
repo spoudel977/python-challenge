@@ -1,6 +1,64 @@
-## example how to walk through gitHub
-print("Hello World")
-print("Hello Python")
-print("Hello Python Again")
-print("Hello Again")
-print("Hello Hello Python")
+# Import OS and CSV file
+import os
+import csv
+
+column_index = 0
+count_ballotID = 0
+
+#  Set file path for the CSV file - PyPoll
+file_path = '/Users/santoshpoudel/Desktop/University_of_Toronto/Assignments/Python Assignment/python-challenge/PyPoll/Resources/election_data.csv'
+
+# Count total number of Vote Cast by people
+with open(file_path, 'r') as file:
+    csv_reader = csv.reader(file)
+    next(csv_reader)
+    
+    for row in csv_reader:
+        if row[column_index].strip():
+            count_ballotID += 1
+
+# Calculate total votes received by each candidate
+def calculate_frequency(csv_reader):
+    from collections import Counter
+    unique_name = Counter()
+    
+    for row in csv_reader:
+        name = row[2]  # Column C
+        
+        # Count the frequency of each unique candidate's name
+        unique_name[name] += 1
+    
+    return unique_name
+
+with open(file_path, 'r') as file:
+    csv_reader = csv.reader(file)
+    next(csv_reader)
+    result = calculate_frequency(csv_reader)
+
+# Calculate Percentage of Total Votes each Candidates secured.
+    percent_dict = {}
+    for name, frequency in result.items():
+        percentage = (frequency / count_ballotID) * 100
+        percent_dict[name] = percentage
+    
+# Find the winning candidate who has the highest percentage of vote count
+winning_candidate = max(percent_dict, key=percent_dict.get)
+
+
+print("Election Results")
+print("---------------------------------------------")
+print("\n")
+print("Total Votes: ", count_ballotID)
+print("---------------------------------------------")
+print("\n")
+# Print the percentage and vote count for each candidate
+for name, frequency in result.items():
+    percentage = percent_dict[name]
+    print(f"{name}: {percentage:.3f}% ({frequency})")
+
+print("---------------------------------------------")
+
+print("Winner : ", winning_candidate)
+
+
+
