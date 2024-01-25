@@ -61,7 +61,7 @@ print("Winner : ", winning_candidate)
 
 # Create a text file in the Analysis folder to add summary result
 
-file_path = os.path.join('/Users/santoshpoudel/Desktop/University_of_Toronto/Assignments/Python Assignment/python-challenge/PyPoll/Analysis', "PyBank_analysis.txt")
+file_path = os.path.join('/Users/santoshpoudel/Desktop/University_of_Toronto/Assignments/Python Assignment/python-challenge/PyPoll/Analysis', "PyPoll_analysis.txt")
 
 with open(file_path, "w") as file:
     # Write the analysis to the text file
